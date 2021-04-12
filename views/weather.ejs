@@ -1,0 +1,35 @@
+<%- include("partials/header"); -%>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <!--<header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">Weatherman</h3>
+      </div>
+    </header>-->
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">what's the weather like today?</h1>
+      <form class="form-box" action="/" method="post">
+        <!--<label for="cityInput">City Name: </label>-->
+        <input id="cityInput" class="form-control-sm get-weather-input" type="text" name="cityName" placeholder="enter a city name">
+        <button class="btn btn-sm btn-secondary get-weather-button" type="submit">get weather</button>
+      </form>
+        <% if(location != null) { %>
+            <p class="lead message">it's <%= temperature %>°C in <%= location %>, but it feels like <%= tempFeelsLike %>°C. </p>
+            <p class="lead message">humidity: <%= humidity %>%</p>
+            <p class="lead message">wind speed: <%= speed %> km/h</p>
+            <p class="lead message"><%= description %> <img class="weather-pic" src=<%= image %>></p>
+        <% } else { %>
+            <p class="lead message">sorry, you may have entered in invalid city name. please try again!</p>
+        <% } %>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <% const currentYear = new Date().getFullYear() %>
+        <p>© Michael Le <%=currentYear%></p>
+      </div>
+    </footer>
+  </div>
+
+
+<%- include("partials/footer"); -%>
